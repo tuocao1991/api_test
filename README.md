@@ -10,7 +10,7 @@ You can use command:
 taskset 1 echo "21000" > /proc/my_driver && dmesg | grep "my_driver"
 
 "21000":
-   2: mode 2, first test spin_lock() and then spin_lock_irqsave()
+   2: mode 2, first test spin_lock() and then spin_lock_irqsave().
 1000: number of loops. In each mode, you should use a larger number of loops, such as 100,1000,10000...
 
 A small number of loops may result in inaccurate test results because the API itself has a short execution time and is easily influenced by the testing method. As the number of loops becomes large, the impact of the test method becomes small. And the greater the number of loops, the more accurate the test results.
