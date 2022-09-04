@@ -22,3 +22,11 @@ taskset 1 echo "21000" > /proc/my_driver && dmesg | grep "my_driver"
 
 
 A small number of loops may result in inaccurate test results because the API itself has a short execution time and is easily influenced by the testing method. As the number of loops becomes large, the impact of the test method becomes small. And the greater the number of loops, the more accurate the test results.
+
+
+I've simply marked the parameters of each execution in api_test.log, such as:
+
+===> echo "2100" > /proc/my_driver
+
+===> echo "21000" > /proc/my_driver
+
