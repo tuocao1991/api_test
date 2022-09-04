@@ -1,0 +1,36 @@
+xxxx:/#taskset 1 echo "21000" > /proc/my_driver && dmesg | grep "my_driver"
+[    2.428761] swapper/0: calling _initstub_kmod_my_driver_321_192_my_driver_init6+0x0/0x8@1
+[    2.430010] swapper/0: [name:my_driver&] [my_driver] Init my_driver_init...
+[    2.431021] swapper/0: initcall initstub_kmod_my_driver_321_192_my_driver_init6+0x0/0x8 returned 0 after 985 usecs
+[   68.096104] echo: [my_driver] Get buffer from user:2100 => (mode:2, loop_count:100)  ===> echo "2100" > /proc/my_driver 
+[   68.096143] echo: [my_driver] leave spin_lock, loop:100,tval2-tva11=3154(ns)
+[   68.096154] echo: [my_driver] leave spin_lock_irqsave, loop:100,tva12-tva11=3692(ns)
+[   68.096160] echo: [my_driver] .................................................
+[   75.345238] echo: [my_driver] Get buffer from user:2100 =>(mode:2, loop_count:100)  ===> echo "2100" > /proc/my_driver 
+[   75.345271] echo: [my_driver] leave spin_lock, 1oop:100,tva12-tva11=3077(ns)
+[   75.345282] echo: [my_driver] leave spin_lock_irqsave,loop:100, tva12-tva11=3384(ns)
+[   75.345287] echo: [my_driver] .................................................
+[   77.335346] echo: [my_driver] Get buffer from user:2100 => (mode:2, loop_count:100)  ===> echo "2100" > /proc/my_driver 
+[   77.335379] echo: [my_driver] leave spin_lock, loop:100,tva12-tva11=3077(ns)
+[   77.335390] echo: [my_driver] leave spin_lock_irqsave, loop:100, tval2-tval1=3616(ns)
+[   77.335395] echo: [my_driver] .................................................
+[   80.558086] echo: [my_driver] Get buffer from user:2100 =>(mode:2, loop_count:100)  ===> echo "2100" > /proc/my_driver 
+[   80.558117] echo: [my_driver] leave spin_lock, loop:100,tval2-tva11=2846(ns)
+[   80.558127] echo: [my_driver] leave spin_lock_irqsave, loop:100, tva12-tva11=3693(ns)
+[   80.558133] echo: [my_driver] .................................................
+[   90.657524] echo: [my_driver] Get buffer from user:21000 => (mode:2,loop_count:1000)  ===> echo "21000" > /proc/my_driver
+[   90.657827] echo: [my_driver] leave spin_lock, 1oop:1000, tva12-tva11=22461(ns)
+[   90.657862] echo: [my_driver] leave spin_lock_irqsave, loop:1000,tva12-tva11=27385(ns)
+[   90.657868] echo: [my_driver] .................................................
+[   94.869003] echo: [my_driver] Get buffer from user:21000 => (mode:2, 1oop_count:1000)  ===> echo "21000" > /proc/my_driver
+[   94.869067] echo: [my_driver] leave spin_lock, loop:1000, tva12-tval1=22461 (ns)
+[   94.869103] echo: [my_driver] leave spin_lock_irqsave, 1oop:1000, tval2-tval1=27692(ns)
+[   94.869108] echo: [my_driver] .................................................
+[   97.265996] echo: [my_driver] Get buffer from user:21000 => (mode:2, loop_count:1000)  ===> echo "21000" > /proc/my_driver
+[   97.266061] echo: [my_driver] leave spin_lock, loop:1000,tva12-tval1=22153(ns)
+[   97.266097] echo: [my_driver] leave spin_lock_irqsave,loop:1000, tval2-tval1=27693(ns)
+[   97.266103] echo: [my_driver] .................................................
+[  100,666580] echo: [my_driver] Get buffer from user:21000 => (mode:2, loop_count:1000)  ===> echo "21000" > /proc/my_driver
+[  100.666639] echo: [my_driver] leave spin_lock, loop:1000, tval2-tvall=22461(ns)
+[  100.666675] echo: [my_driver] leave spin_lock_irqsave, loop:1000, tval2-tval1=27692(ns)
+[  100.666680] echo: [my_driver] .................................................
