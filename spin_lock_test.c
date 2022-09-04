@@ -24,10 +24,10 @@
 //#include <spin_lock_test.h>
 
 //test mode
-#define SPIN_LOCK_0_M			       0 //just test spin_lock()
-#define SPIN_LOCK_IRQSAVE_1_M 	 1 //just test spin_lock_irqsave()
-#define SPIN_MIX_01_M 	 		     2 //first test spin_lock() and then spin_lock_irqsave()
-#define SPIN_MIX_10_M		      	 3 //first test spin_lock_irqsave() and then spin_lock()
+#define SPIN_LOCK_0_M			0 //just test spin_lock()
+#define SPIN_LOCK_IRQSAVE_1_M		1 //just test spin_lock_irqsave()
+#define SPIN_MIX_01_M			2 //first test spin_lock() and then spin_lock_irqsave()
+#define SPIN_MIX_10_M			3 //first test spin_lock_irqsave() and then spin_lock()
 
 spinlock_t my_lock;
 spinlock_t my_lock_exp;
@@ -57,7 +57,7 @@ static int api_exec_time_test(unsigned int count, int mode)
 		}
 		isb();
 		tval2 = ktime_get();
-		prink(KERN_CRIT"[my_driver] leave spin_lock, loop:%d, tval2-tval1=%d(ns)\n", count, tval2-tval1);
+		prink(KERN_CRIT"[my_driver] leave spin_lock, loop:%d, tval2-tval1=%ld(ns)\n", count, ktime_to_ns(ktime_sub(tval2, tval1)));
 	}
 	else if (mode == SPIN_LOCK_IRQSAVE_1_M) {
 		tval1 = ktime_get();
@@ -68,7 +68,7 @@ static int api_exec_time_test(unsigned int count, int mode)
 		}
 		isb();
 		tval2 = ktime_get();
-		prink(KERN_CRIT"[my_driver] leave spin_lock_irqsave, loop:%d, tval2-tval1=%d(ns)\n", count, tval2-tval1);
+		prink(KERN_CRIT"[my_driver] leave spin_lock_irqsave, loop:%d, tval2-tval1=%ld(ns)\n", count, ktime_to_ns(ktime_sub(tval2, tval1)));
 	}
 	if (mode == SPIN_MIX_01_M) {
 		tval1 = ktime_get();
@@ -79,7 +79,7 @@ static int api_exec_time_test(unsigned int count, int mode)
 		}
 		isb();
 		tval2 = ktime_get();
-		prink(KERN_CRIT"[my_driver] leave spin_lock, loop:%d, tval2-tval1=%d(ns)\n", count, tval2-tval1);
+		prink(KERN_CRIT"[my_driver] leave spin_lock, loop:%d, tval2-tval1=%ld(ns)\n", count, ktime_to_ns(ktime_sub(tval2, tval1)));
 		
 		isb();
 		tval1 = ktime_get();
@@ -90,7 +90,7 @@ static int api_exec_time_test(unsigned int count, int mode)
 		}
 		isb();
 		tval2 = ktime_get();
-		prink(KERN_CRIT"[my_driver] leave spin_lock_irqsave, loop:%d, tval2-tval1=%d(ns)\n", count, tval2-tval1);
+		prink(KERN_CRIT"[my_driver] leave spin_lock_irqsave, loop:%d, tval2-tval1=%ld(ns)\n", count, ktime_to_ns(ktime_sub(tval2, tval1)));
 	}
 	if (mode == SPIN_MIX_10_M) {
 		tval1 = ktime_get();
@@ -101,7 +101,7 @@ static int api_exec_time_test(unsigned int count, int mode)
 		}
 		isb();
 		tval2 = ktime_get();
-		prink(KERN_CRIT"[my_driver] leave spin_lock_irqsave, loop:%d, tval2-tval1=%d(ns)\n", count, tval2-tval1);
+		prink(KERN_CRIT"[my_driver] leave spin_lock_irqsave, loop:%d, tval2-tval1=%ld(ns)\n", count, ktime_to_ns(ktime_sub(tval2, tval1)));
 		
 		isb();
 		tval1 = ktime_get();
@@ -112,7 +112,7 @@ static int api_exec_time_test(unsigned int count, int mode)
 		}
 		isb();
 		tval2 = ktime_get();
-		prink(KERN_CRIT"[my_driver] leave spin_lock, loop:%d, tval2-tval1=%d(ns)\n", count, tval2-tval1);
+		prink(KERN_CRIT"[my_driver] leave spin_lock, loop:%d, tval2-tval1=%ld(ns)\n", count, ktime_to_ns(ktime_sub(tval2, tval1)));
 	}
 	
 	local_irq_enable();
